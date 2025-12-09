@@ -62,7 +62,7 @@
 
 ## 📦 주요 라이브러리
 
-### **FastAPI & 웹**
+### FastAPI & 웹
 ```
 fastapi==0.121.0
 uvicorn==0.33.0
@@ -70,32 +70,32 @@ websockets==13.1
 python-multipart
 ```
 
-### **데이터베이스 & 캐시**
+### 데이터베이스 & 캐시
 ```
 pymysql
 mysql-connector-python
 redis
 ```
 
-### **AI & API 통신**
+### AI & API 통신
 ```
 httpx==0.27.0          # 비동기 HTTP 클라이언트
 grpcio==1.70.0         # gRPC 통신
 protobuf==5.29.5       # 직렬화
 ```
 
-### **음성 처리**
+### 음성 처리
 ```
 pydub==0.25.1          # 오디오 변환
 soundfile==0.13.1      # 오디오 I/O
 ```
 
-### **AWS & 클라우드**
+### AWS & 클라우드
 ```
 boto3==1.6.19          # AWS SDK
 ```
 
-### **유틸리티**
+### 유틸리티
 ```
 python-dotenv==1.0.1   # 환경 변수
 pydantic==2.10.6       # 데이터 검증
@@ -161,7 +161,7 @@ dialog-ai-server/
 
 ## ✨ 핵심 기능
 
-### 🎤 **1. 실시간 STT (Speech-to-Text)**
+### 🎤 1. 실시간 STT (Speech-to-Text)
 
 **담당:** 김나운
 
@@ -178,7 +178,7 @@ dialog-ai-server/
 
 <br/>
 
-### 👥 **2. 화자 구분 분석**
+### 👥 2. 화자 구분 분석
 
 **담당:** 김나운
 
@@ -196,7 +196,7 @@ dialog-ai-server/
 
 <br/>
 
-### 📝 **3. 회의 요약 생성**
+### 📝 3. 회의 요약 생성
 
 **담당:** 지승엽
 
@@ -225,7 +225,7 @@ dialog-ai-server/
 
 <br/>
 
-### ✅ **4. 액션 아이템 생성 (내 할 일)**
+### ✅ 4. 액션 아이템 생성 (내 할 일)
 
 **담당:** 지승엽
 
@@ -246,7 +246,7 @@ dialog-ai-server/
 
 <br/>
 
-### 🔍 **5. 회의 검색 챗봇**
+### 🔍 5. 회의 검색 챗봇
 
 **담당:** 장문선
 
@@ -318,7 +318,7 @@ dialog-ai-server/
 
 <br/>
 
-### 💬 **6. IT 용어 FAQ 챗봇**
+### 💬 6. IT 용어 FAQ 챗봇
 
 **담당:** 장문선
 
@@ -352,7 +352,7 @@ dialog-ai-server/
 
 ## 🔄 워크플로우
 
-### 📊 **1. 회의 진행 워크플로우**
+### 📊 1. 회의 진행 워크플로우
 
 ```
 ┌────────────────┐
@@ -394,7 +394,7 @@ dialog-ai-server/
 
 <br/>
 
-### 🤖 **2. 회의 검색 챗봇 워크플로우**
+### 🤖 2. 회의 검색 챗봇 워크플로우
 
 ```
 ┌─────────────────────┐
@@ -439,7 +439,7 @@ dialog-ai-server/
 
 <br/>
 
-### 💡 **3. IT 용어 챗봇 워크플로우**
+### 💡 3. IT 용어 챗봇 워크플로우
 
 ```
 ┌─────────────────────┐
@@ -478,7 +478,7 @@ dialog-ai-server/
 
 ## 💰 비용 최적화 전략
 
-### **1️⃣ Template 기반 RAG (회의 검색)**
+### 1️⃣ Template 기반 RAG (회의 검색)
 ```
 기존 방식: 모든 질문 → HyperCLOVA X → 💰💰💰
 최적화 방식: Template 패턴 사용 → 💰 (0원)
@@ -486,14 +486,14 @@ dialog-ai-server/
 ✅ 결과: 80% 비용 절감
 ```
 
-### **2️⃣ 3-tier 폴백 시스템 (IT 용어)**
+### 2️⃣ 3-tier 폴백 시스템 (IT 용어)
 ```
 Tier 1: JSON 검색 (무료)         ← 대부분 여기서 해결
 Tier 2: CLOVA Chatbot Builder    ← 저비용
 Tier 3: HyperCLOVA X             ← 최종 수단
 ```
 
-### **3️⃣ 병렬 처리 (요약 생성)**
+### 3️⃣ 병렬 처리 (요약 생성)
 ```python
 # 5개 항목을 순차 호출 → 25초
 # 5개 항목을 병렬 호출 → 5초 (asyncio.gather 사용)
@@ -501,7 +501,7 @@ Tier 3: HyperCLOVA X             ← 최종 수단
 ✅ 결과: 응답 시간 80% 단축 + 서버 리소스 절약
 ```
 
-### **4️⃣ Redis 캐싱 (컨텍스트 관리)**
+### 4️⃣ Redis 캐싱 (컨텍스트 관리)
 ```
 - 컨텍스트 TTL: 10분
 - 불필요한 DB 조회 감소
@@ -516,19 +516,19 @@ Tier 3: HyperCLOVA X             ← 최종 수단
 
 ## 🌐 API 엔드포인트
 
-### **STT & 음성 처리**
+### STT & 음성 처리
 ```http
 POST /api/stt/recognize          # 실시간 STT 시작
 POST /api/stt/speaker-analysis   # 화자 구분 분석
 ```
 
-### **회의 요약 & 액션**
+### 회의 요약 & 액션
 ```http
 POST /api/summary                # 회의 요약 생성 (5가지 항목)
 POST /api/actions                # 액션 아이템 생성
 ```
 
-### **챗봇**
+### 챗봇
 ```http
 POST /api/chatbot/search         # 회의 검색 챗봇
 POST /api/chatbot/faq            # IT 용어 FAQ 챗봇
@@ -595,7 +595,7 @@ ENABLE_PERSONA=true
 
 ## 🚀 배포 방법
 
-### **로컬 실행**
+### 로컬 실행
 
 ```bash
 # 1. 라이브러리 설치
@@ -605,7 +605,7 @@ pip install -r requirements.txt
 uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
-### **Docker 실행**
+### Docker 실행
 
 ```bash
 # 1. 이미지 빌드
@@ -615,7 +615,7 @@ docker build -t dialog-ai .
 docker run -p 8000:8000 dialog-ai
 ```
 
-### **프로덕션 배포 (GitHub Actions)**
+### 프로덕션 배포 (GitHub Actions)
 
 **자동 배포 트리거:**
 - `main` 브랜치에 push 시 자동 실행
@@ -645,22 +645,22 @@ docker run -p 8000:8000 dialog-ai
 
 ## 🎯 주요 특징
 
-### **확장 가능한 아키텍처**
+### 확장 가능한 아키텍처
 - ✅ 서비스별 모듈 분리 (`summary_service`, `action_service`, `chatbot`)
 - ✅ 직무별 페르소나 확장 가능
 - ✅ 새로운 검색 유형 추가 용이
 
-### **안정적인 오류 처리**
+### 안정적인 오류 처리
 - ✅ 모든 API 호출에 `try-except` 적용
 - ✅ 타임아웃 설정 (30초)
 - ✅ 상세한 에러 로깅 (`loguru`)
 
-### **실시간 처리**
+### 실시간 처리
 - ✅ WebSocket 기반 실시간 STT
 - ✅ 비동기 처리 (`asyncio`, `httpx`)
 - ✅ 병렬 API 호출
 
-### **비용 효율성**
+### 비용 효율성
 - ✅ Template 우선 → LLM 최소화
 - ✅ 3-tier 폴백 시스템
 - ✅ Redis 캐싱
