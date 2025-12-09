@@ -35,9 +35,6 @@
   - [6. IT 용어 FAQ 챗봇](#-6-it-용어-faq-챗봇)
 - [워크플로우](#-워크플로우)
 - [비용 최적화 전략](#-비용-최적화-전략)
-- [API 엔드포인트](#-api-엔드포인트)
-- [환경 변수 설정](#-환경-변수-설정)
-- [배포 방법](#-배포-방법)
 - [주요 특징](#-주요-특징)
   
 <br/>
@@ -129,10 +126,9 @@ dialog-ai-server/
 │
 ├── 🤖 챗봇 시스템
 │   │
-│   ├── 📂 chatbot/
-│   │   └── terms_database.json   # IT 용어 데이터베이스
-│   │
 │   ├── 📂 chatbotFAQ/
+│   │   ├── 📂 data/
+│   │   │   └── terms_database.json   # IT 용어 데이터베이스
 │   │   └── chatbotFAQMain.py     # IT 용어 FAQ 챗봇
 │   │
 │   └── 📂 chatbotSearch/
@@ -410,7 +406,7 @@ dialog-ai-server/
            ▼
 ┌──────────────────────────────────────┐
 │  쿼리 타입 분류 (selection.py)        │
-│  → 날짜 / 키워드 / 참가자 / 할일      │
+│  → 날짜 / 키워드 / 참가자 / 할일       │
 └──────────┬───────────────────────────┘
            │
            ▼
@@ -423,7 +419,7 @@ dialog-ai-server/
            ▼
 ┌──────────────────────────────────────┐
 │  응답 포맷팅 (formatting.py)          │
-│  - 검색 결과 → 자연어 변환            │
+│  - 검색 결과 → 자연어 변환             │
 └──────────┬───────────────────────────┘
            │
            ▼
@@ -506,135 +502,6 @@ Tier 3: HyperCLOVA X             ← 최종 수단
 - 컨텍스트 TTL: 10분
 - 불필요한 DB 조회 감소
 - 빠른 응답 속도
-```
-
-<br/>
-
----
-
-<br/>
-
-## 🌐 API 엔드포인트
-
-### STT & 음성 처리
-```http
-POST /api/stt/recognize          # 실시간 STT 시작
-POST /api/stt/speaker-analysis   # 화자 구분 분석
-```
-
-### 회의 요약 & 액션
-```http
-POST /api/summary                # 회의 요약 생성 (5가지 항목)
-POST /api/actions                # 액션 아이템 생성
-```
-
-### 챗봇
-```http
-POST /api/chatbot/search         # 회의 검색 챗봇
-POST /api/chatbot/faq            # IT 용어 FAQ 챗봇
-```
-
-<br/>
-
----
-
-<br/>
-
-## ⚙️ 환경 변수 설정
-
-`.env` 파일 생성:
-
-```bash
-# ============================================================
-# CLOVA API
-# ============================================================
-CLOVA_API_KEY=your-api-key
-CLOVA_STUDIO_URL=your-studio-url
-CLOVA_SECRET_KEY=your-secret-key
-CLOVA_INVOKE_URL=your-invoke-url
-
-# ============================================================
-# MySQL
-# ============================================================
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=root
-DB_PASSWORD=your-password
-DB_NAME=dialog
-
-# ============================================================
-# Redis
-# ============================================================
-REDIS_HOST=localhost
-REDIS_PORT=6379
-
-# ============================================================
-# Object Storage
-# ============================================================
-OBS_BUCKET_NAME=your-bucket
-OBS_ENDPOINT=your-endpoint
-OBS_ACCESS_KEY=your-access-key
-OBS_SECRET_KEY=your-secret-key
-
-# ============================================================
-# Lambda (Optional)
-# ============================================================
-LAMBDA_FUNCTION_URL=your-lambda-url
-
-# ============================================================
-# 기능 토글
-# ============================================================
-ENABLE_PERSONA=true
-```
-
-<br/>
-
----
-
-<br/>
-
-## 🚀 배포 방법
-
-### 로컬 실행
-
-```bash
-# 1. 라이브러리 설치
-pip install -r requirements.txt
-
-# 2. 서버 실행
-uvicorn main:app --host 0.0.0.0 --port 8000
-```
-
-### Docker 실행
-
-```bash
-# 1. 이미지 빌드
-docker build -t dialog-ai .
-
-# 2. 컨테이너 실행
-docker run -p 8000:8000 dialog-ai
-```
-
-### 프로덕션 배포 (GitHub Actions)
-
-**자동 배포 트리거:**
-- `main` 브랜치에 push 시 자동 실행
-
-**배포 프로세스:**
-```
-1. CI (빌드 검증)
-   ├─ Python 3.8 설정
-   ├─ 필수 파일 확인
-   ├─ 라이브러리 설치
-   └─ Docker 빌드 테스트
-
-2. CD (배포)
-   ├─ Docker Hub 로그인
-   ├─ 이미지 빌드 & 푸시
-   └─ EC2 SSH 접속
-       ├─ 기존 컨테이너 정리
-       ├─ 최신 이미지 Pull
-       └─ 컨테이너 재시작
 ```
 
 <br/>
